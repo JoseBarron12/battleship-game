@@ -5,7 +5,6 @@ export class Ship {
         if(length < 1) throw new error("Expected length greater than or equal to one");
         this._length = length;
         this._hits = 0;
-        this._sunk = false;
         this._placed = false;
     }
 
