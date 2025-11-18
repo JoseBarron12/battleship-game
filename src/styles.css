@@ -110,6 +110,8 @@ body {
 
 
 .bottom-board, .top-board {
+    width: min(100vh, 100%);
+    justify-self: center;
     display: grid;
     grid-template-columns: 1fr 4fr 1fr;
 }
