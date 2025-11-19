@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'Black Ops One';
+    src: url('./fonts/BlackOpsOne-Regular.woff2') format('woff2'),
+        url('./fonts/BlackOpsOne-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
 *,
 *::before,
 *::after {
@@ -157,7 +165,8 @@ body {
     box-shadow: var(--inset-color) 0px 0px 3px 3px inset;
     display: grid;
     grid-template-rows: repeat(11, 1fr);
-    padding: 0px 16px 16px 0px;
+    padding: 2px 16px 16px 2px;
+    font-family: 'Black Ops One';
 }
 
 .game-board > .row {
@@ -165,21 +174,36 @@ body {
     grid-template-columns: repeat(11, 1fr);
 }
 
+.game-board > .row > .column {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-board > .row > .column > .circle {
+    width: 8px;
+    height: 8px;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+}
+
 .row > .column:not(:nth-child(2)) {
-    border-left: 1px solid black;
+    border-left: 2px solid rgba(255, 255, 255, 0.15);
 }
 
 .row:not(:nth-child(11)) > .column {
-    border-bottom: 1px solid black;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.15);
 }
+
 
 .game-board > .row > .name {
     border: none;
     font-weight: bold;
-    font-size: larger;
+    font-size: 1.25rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: var(--secondary-color);
 }
 
 
