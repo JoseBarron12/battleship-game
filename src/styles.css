@@ -220,7 +220,51 @@ body {
     border-top-left-radius: 150% 10%;
     border-bottom-left-radius: 100% calc(100% / 3);
     border-right: none;
+    position: relative;
 }
+
+.battleship {
+  width: 45px;
+  height: 160px;
+  position: absolute;
+  top: 16px;
+  left: 32px;
+}
+
+.carrier {
+  width: 45px;
+  height: 200px;
+  position: absolute;
+  left: 32px;
+  bottom: 36px;
+}
+
+.submarine {
+  width: 45px;
+  height: 120px;
+  position: absolute;
+  right: 16px;
+  bottom: 24px;
+}
+
+.cruiser {
+  width: 45px;
+  height: 120px;
+  position: absolute;
+  right: 16px;
+  top: 24px;
+}
+
+.destroyer {
+  width: 45px;
+  height: 80px;
+  position: absolute;
+  right: 16px;
+  top: 172px;
+}
+
+
+
 
 .piece-holder{
   border-top-right-radius: 150% 10%;
