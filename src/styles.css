@@ -155,7 +155,33 @@ body {
     background-color: var(--board-color);
     border: 8px solid var(--board-color);
     box-shadow: var(--inset-color) 0px 0px 3px 3px inset;
+    display: grid;
+    grid-template-rows: repeat(11, 1fr);
+    padding: 0px 16px 16px 0px;
 }
+
+.game-board > .row {
+    display: grid;
+    grid-template-columns: repeat(11, 1fr);
+}
+
+.row > .column:not(:nth-child(2)) {
+    border-left: 1px solid black;
+}
+
+.row:not(:nth-child(11)) > .column {
+    border-bottom: 1px solid black;
+}
+
+.game-board > .row > .name {
+    border: none;
+    font-weight: bold;
+    font-size: larger;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 .battle-ship-holder, .piece-holder {
     margin: 16px 0px;
