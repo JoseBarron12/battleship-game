@@ -15,9 +15,10 @@ export const display = (function() {
                 num.forEach((n) => {
                     const column = document.createElement("div");
                     column.classList.add("column");
+                    column.classList.add("name");
                     
                     if(n != 0) column.textContent = n;
-                   
+                        
                     row.appendChild(column);
                     
                 });
@@ -33,10 +34,15 @@ export const display = (function() {
                     if(j == 0) 
                     {
                         column.textContent = `${letters[i - 1]}`;
+                        column.classList.add("name")
                     }
                     else
                     {
                         column.classList.add(`${j - 1}-${i - 1}`);
+
+                        const circle = document.createElement("div");
+                        circle.classList.add("circle");
+                        column.appendChild(circle);
                     }
 
                 }
