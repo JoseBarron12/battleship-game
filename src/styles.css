@@ -166,7 +166,7 @@ body {
     border-radius: 0px 0px 16px 16px;
     background-color: var(--board-color);
     border: 8px solid var(--board-color);
-    box-shadow: var(--inset-color) 0px 0px 3px 3px inset;
+    box-shadow: var(--inset-color) 0px 0px 6px 6px inset;
     display: grid;
     grid-template-rows: repeat(11, 1fr);
     padding: 2px 16px 16px 2px;
@@ -213,7 +213,7 @@ body {
     margin: 16px 0px;
     background-color: var(--board-color);
     border: 6px solid var(--board-color);
-    box-shadow: var(--inset-color) 0px 0px 3px 3px inset;
+    box-shadow: var(--inset-color) 0px 0px 6px 6px inset;
 }
 
 .battle-ship-holder{
@@ -223,7 +223,22 @@ body {
 }
 
 .piece-holder{
-    border-top-right-radius: 150% 10%;
-    border-bottom-right-radius: 100% calc(100% / 3);
-    border-left: none;
+  border-top-right-radius: 150% 10%;
+  border-bottom-right-radius: 100% calc(100% / 3);
+  border-left: none;
+  display: grid;
+  grid-template-rows: 2fr 3fr;
 }
+
+.hit-pieces, .miss-pieces {
+  border-bottom: 6px solid var(--board-color);
+  box-shadow: var(--inset-color) 0px 0px 6px 6px inset;
+}
+.hit-pieces {
+  border-top-right-radius: 150% 23%;
+}
+
+.miss-pieces {
+  border-bottom-right-radius: 66% 36%;
+}
+
