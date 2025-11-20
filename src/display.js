@@ -1,3 +1,5 @@
+import { functionality } from "./functionality";
+
 const getRandomNum = (min, max) => {
     return Math.floor(Math.random() * max);
 }
@@ -17,6 +19,8 @@ export const display = (function() {
         btn.classList.add("start-game-btn");
         btn.textContent = "Start New Game";
         screen.appendChild(btn);
+
+        functionality.startGameBtn(btn, parent);
 
         const help = document.createElement("p");
         help.classList.add("help-desc");
@@ -119,7 +123,6 @@ export const display = (function() {
         form.appendChild(submitBtn);
     }
 
-    
     const gameboard = (parent, isOpponent) => {
 
         let board = parent;
