@@ -114,13 +114,12 @@ export const display = (function() {
 
         }
 
-
-
-
         const submitBtn = document.createElement("button");
         submitBtn.classList.add("submit-btn");
         submitBtn.textContent = "Begin Battle"
         form.appendChild(submitBtn);
+
+        functionality.submitShipBtn(submitBtn, form);
     }
 
     const gameboard = (parent, isOpponent) => {
