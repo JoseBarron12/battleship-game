@@ -211,7 +211,40 @@ body {
     border-top-right-radius: 100% calc(100% / 3);
     border-bottom-right-radius: 150% 10%;
     border-left: none;
+    padding: 16px 8px 16px 12px;
+    display: grid;
+    grid-template-rows: 4fr 1fr;
+    gap: 16px;
+    min-width: 0;
+    min-height: 0;
 }
+
+.battle-ship-types {
+  color: var(--board-color);
+  text-shadow: black 1px 1px 1px;
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  gap: 4px;
+}
+
+.settings-button {
+  background-color: red;
+  height: 100%;
+  margin: auto;
+  padding: 0px 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: black 1px 1px 5px 0px;
+}
+
+.settings-button > svg {
+  height: 64px;
+  width: auto;
+  fill: rgb(138, 0, 0);
+}
+
 
 .game-board {
     border-radius: 0px 0px 16px 16px;
