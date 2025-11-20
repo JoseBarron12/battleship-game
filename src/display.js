@@ -23,6 +23,102 @@ export const display = (function() {
         help.textContent = "How to play?"
         screen.appendChild(help);
     }
+
+    const selectScreen = (parent) => {
+        const screen = document.createElement("div");
+        screen.classList.add("select-screen");
+        parent.appendChild(screen);
+
+        const header = document.createElement("h2");
+        header.classList.add("welcome-header");
+        header.textContent = "Make Your Selections"
+        screen.appendChild(header); 
+
+        const form = document.createElement("form");
+        form.classList.add("input-ships");
+        screen.appendChild(form);
+
+        const shipNames = ["carrier", "battleship", "submarine", "cruiser", "destroyer"];
+
+
+        for(let i = 0; i < 5; i++)
+        {
+            const field = document.createElement("fieldset");
+            form.appendChild(field);
+
+            const legend = document.createElement('legend');
+            legend.textContent = "[Select Coordinates] " + shipNames[i].charAt(0).toUpperCase() + shipNames[i].slice(1) + ":";
+            field.append(legend);
+
+            const labelX =  document.createElement('label');
+            labelX.setAttribute("for", `${shipNames[i]}-x`);
+            labelX.textContent = "X:"
+            field.append(labelX);
+
+            const selectX =  document.createElement("select");
+            selectX.setAttribute("id", `${shipNames[i]}-x`);
+
+            for(let j = 0; j < 10; j++)
+            {
+                const option = document.createElement("option");
+                option.textContent = j + 1;
+                option.setAttribute("value",`${j}`);
+                selectX.appendChild(option);
+            }
+            
+            field.appendChild(selectX);
+
+            const labelY =  document.createElement('label');
+            labelY.setAttribute("for", `${shipNames[i]}-y`);
+            labelY.textContent = "Y:"
+            field.append(labelY);
+
+            const selectY =  document.createElement("select");
+            selectY.setAttribute("id", `${shipNames[i]}-y`);
+
+            const letters = "ABCDEFGHIJ";
+
+            for(let j = 0; j < 10; j++)
+            {
+                const option = document.createElement("option");
+                option.textContent = letters[j];
+                option.setAttribute("value",`${j}`);
+                selectY.appendChild(option);
+            }
+            field.appendChild(selectY);
+
+            const labelDir =  document.createElement('label');
+            labelDir.setAttribute("for", `${shipNames[i]}-dir`);
+            labelDir.textContent = "Direction:"
+            field.append(labelDir);
+
+            const directions = ["up", "down", "left", "right"];
+
+            const selectDir=  document.createElement("select");
+            selectDir.setAttribute("id", `${shipNames[i]}-dir`);
+
+
+            for(let j = 0; j < 4; j++)
+            {
+                const option = document.createElement("option");
+                option.textContent = directions[j].charAt(0).toUpperCase() + directions[j].slice(1);
+                option.setAttribute("value",`${directions[j]}`);
+                selectDir.appendChild(option);
+            }
+
+            field.appendChild(selectDir);
+
+        }
+
+
+
+
+        const submitBtn = document.createElement("button");
+        submitBtn.classList.add("submit-btn");
+        submitBtn.textContent = "Begin Battle"
+        form.appendChild(submitBtn);
+    }
+
     
     const gameboard = (parent, isOpponent) => {
 
@@ -104,5 +200,5 @@ export const display = (function() {
 
         }
     }
-    return {gameboard, gamePieces, initialScreen}
+    return {gameboard, gamePieces, initialScreen, selectScreen}
 })();
