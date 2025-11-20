@@ -17,6 +17,9 @@ export const display = (function() {
     
     const gameboard = (parent) => {
 
+        const board = document.createElement("div");
+        board.classList.add("board");
+        parent.appendChild(board);
 
         const letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
 
@@ -24,7 +27,7 @@ export const display = (function() {
         {
             const row = document.createElement("div");
             row.classList.add("row");
-            parent.appendChild(row);
+            board.appendChild(row);
             
             if(i == 0) 
             {
