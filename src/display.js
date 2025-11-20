@@ -49,6 +49,7 @@ export const display = (function() {
         for(let i = 0; i < 5; i++)
         {
             const field = document.createElement("fieldset");
+            field.classList.add(`${shipNames[i]}-fieldset`);
             form.appendChild(field);
 
             const legend = document.createElement('legend');
@@ -225,9 +226,6 @@ export const display = (function() {
         }
 
     }
-
-
-
 
     return {gameboard, gamePieces, initialScreen, selectScreen, gameboardSelection}
 })();
