@@ -1,3 +1,7 @@
+const getRandomNum = (min, max) => {
+    return Math.floor(Math.random() * max);
+}
+
 export const display = (function() {
     const gameboard = (parent) => {
 
@@ -54,6 +58,7 @@ export const display = (function() {
     const gamePieces = (parent, isHit) => {
         const numOfPieces = (isHit) ? 17 : 83;
 
+
         for(let i = 0; i < numOfPieces; i++)
         {
             const piece = document.createElement("div");
@@ -61,6 +66,13 @@ export const display = (function() {
             
             piece.classList.add(className);
             parent.appendChild(piece);
+
+            const xOffset = getRandomNum(50, parent.getBoundingClientRect().width - 45);
+            const yOffset =  getRandomNum(50, parent.getBoundingClientRect().height - 45);
+
+            piece.style.top = `${yOffset}px`;
+            piece.style.left = `${xOffset}px`
+
         }
     }
 

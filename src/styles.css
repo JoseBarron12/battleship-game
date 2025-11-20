@@ -270,13 +270,14 @@ body {
   border-left: none;
   overflow: hidden;
   display: grid;
-  grid-template-rows: 2fr 3fr;
+  grid-template-rows: 1fr 2fr;
 }
 
 .hit-pieces, .miss-pieces {
   border-bottom: 6px solid var(--board-color);
   box-shadow: var(--inset-color) 0px 0px 6px 6px inset;
   overflow: hidden;
+  position: relative;
 }
 .hit-pieces {
   border-top-right-radius: 150% 23%;
@@ -292,6 +293,7 @@ body {
   height: 32px;
   border-radius: 100%;
   box-shadow: var(--inset-color) 1px 1px 1px 1px;
+  position: absolute;
 }
 
 .hit-piece {

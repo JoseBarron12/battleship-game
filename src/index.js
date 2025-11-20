@@ -10,5 +10,6 @@ display.gamePieces(document.querySelector(".miss-pieces"), false);
 const hitPieces = document.querySelector(".hit-pieces");
 console.log(hitPieces.children.length);
 
+
 const missPieces = document.querySelector(".miss-pieces");
 console.log(missPieces.children.length);
