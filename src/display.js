@@ -125,10 +125,10 @@ export const display = (function() {
     }
 
     const gameboard = (parent, isOpponent) => {
-
         let board = parent;
         if(isOpponent)
         {
+            parent.replaceChildren();
             board = document.createElement("div");
             board.classList.add("board");
             parent.appendChild(board);
@@ -206,7 +206,12 @@ export const display = (function() {
     };
 
     const gameboardSelection = (parent, gameBoardClassObj) => {
-        const rows = parent.querySelectorAll("rows");
+        
+        const pieces = parent.querySelectorAll(".hit-piece");
+        pieces.forEach(piece => {
+            piece.remove();
+        })
+        
         const gameBoard = gameBoardClassObj.gameboard;
 
         for(let r = 0; r < gameBoard.length; r++)
