@@ -114,6 +114,7 @@ body {
     display: grid;
     grid-template-rows: 1fr 1fr;
     padding: 8px;
+    font-family: 'Black Ops One';
 }
 
 
@@ -149,13 +150,65 @@ body {
     margin: 16px 0px;
     background-color: var(--secondary-color);
     border: 8px solid var(--board-color);
+    min-width: 0;
 }
 
 .left-side {
-    border-top-left-radius: 100% calc(100% / 3);
-    border-bottom-left-radius: 150% 10%;
-    border-right: none;
+  border-top-left-radius: 100% calc(100% / 3);
+  border-bottom-left-radius: 150% 10%;
+  border-right: none;
+  padding: 48px 8px 16px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.game-screen {
+  background: linear-gradient( 180deg, #138504 0%, #0e5c04fb 100%);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 8px;
+  color: rgba(255, 255, 255, 0.55);
+  overflow: hidden;
+}
+
+.current-player {
+  font-weight: bolder;
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+.play-desc {
+  width: calc(100%);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.current-player-icon {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  position: relative;
+}
+
+.player-icon {
+  fill: rgba(255, 255, 255, 0.35);
+}
+
+.player-icon.computer {
+  display: none;
+  position: absolute;
+  top: 0px;
+}
+
+
+
+
 
 .right-side { 
     border-top-right-radius: 100% calc(100% / 3);
