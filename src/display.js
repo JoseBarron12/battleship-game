@@ -54,7 +54,7 @@ export const display = (function() {
     const gamePieces = (parent, isHit) => {
         const numOfPieces = (isHit) ? 17 : 83;
 
-        for(let i = 1; i < numOfPieces; i++)
+        for(let i = 0; i < numOfPieces; i++)
         {
             const piece = document.createElement("div");
             const className = (isHit) ? "hit-piece" : "miss-piece";
