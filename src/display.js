@@ -15,12 +15,16 @@ export const display = (function() {
         parent.appendChild(btn);
     }
     
-    const gameboard = (parent) => {
+    const gameboard = (parent, isOpponent) => {
 
-        const board = document.createElement("div");
-        board.classList.add("board");
-        parent.appendChild(board);
-
+        let board = parent;
+        if(isOpponent)
+        {
+            board = document.createElement("div");
+            board.classList.add("board");
+            parent.appendChild(board);
+        }
+        
         const letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
 
         for(let i = 0; i < 11; i++)
