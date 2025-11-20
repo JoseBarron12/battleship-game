@@ -173,6 +173,7 @@ body {
   padding: 16px 8px;
   color: rgba(255, 255, 255, 0.55);
   overflow: hidden;
+  box-shadow: var(--inset-color) 1px 1px 1px 1px;
 }
 
 .current-player {
@@ -205,10 +206,6 @@ body {
   position: absolute;
   top: 0px;
 }
-
-
-
-
 
 .right-side { 
     border-top-right-radius: 100% calc(100% / 3);
