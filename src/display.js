@@ -4,15 +4,24 @@ const getRandomNum = (min, max) => {
 
 export const display = (function() {
     const initialScreen = (parent) => {
+        const screen = document.createElement("div");
+        screen.classList.add("welcome-screen");
+        parent.appendChild(screen);
+        
         const header = document.createElement("h1");
         header.classList.add("welcome-header");
         header.textContent = "Welcome to Battleship"
-        parent.appendChild(header);
+        screen.appendChild(header);
 
         const btn = document.createElement("button");
         btn.classList.add("start-game-btn");
         btn.textContent = "Start New Game";
-        parent.appendChild(btn);
+        screen.appendChild(btn);
+
+        const help = document.createElement("p");
+        help.classList.add("help-desc");
+        help.textContent = "How to play?"
+        screen.appendChild(help);
     }
     
     const gameboard = (parent, isOpponent) => {
