@@ -42,6 +42,8 @@ export const functionality = (function() {
     const submitShipBtn = (btn, form) => {
         btn.addEventListener("click", (e) => {
             e.preventDefault();
+  
+            let validInput = true;
 
             const arrOfShips = getShipInput(form);
             const gameboard = new Gameboard();
@@ -65,8 +67,13 @@ export const functionality = (function() {
                     label.classList.add("valid");
                 }
             });
-
+            
             display.gameboardSelection(document.querySelector(".game-board"),gameboard);
+            
+            if(validInput)
+            {
+                display.gameboard(document.querySelector(".opponent-board"), true);
+            }
 
         });
 
