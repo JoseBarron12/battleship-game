@@ -196,18 +196,35 @@ body {
   grid-auto-rows: 1fr;
   justify-content: center;
   padding: 8px;
+  gap: 8px;
 }
 
 .select-screen > form > fieldset {
-  border: none;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
+  width: 100%;
+  position: relative;
+  padding: 0px 16px 4px 16px;
+  border-radius: 8px;
+  border: none;
+}
+
+.invalid {
+  border: 2px solid red;
+  background-color:  rgba(255, 0, 0, 0.459);
+}
+
+.valid {
+  border: 1px solid green;
+  background-color: rgb(0, 128, 0, 0.459);
 }
 
 
 .select-screen > form > fieldset > legend {
   font-weight: bold;
+  position: absolute;
+  top: 0px;
 }
 
 .select-screen > form > fieldset > :nth-child(2n + 4)

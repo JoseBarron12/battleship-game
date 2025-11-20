@@ -1,4 +1,5 @@
 import { display } from "./display";
+import { Gameboard } from "./gameboard";
 
 const getShipInput = (form) => {
     const fields = form.querySelectorAll("fieldset");
@@ -27,6 +28,8 @@ const getShipInput = (form) => {
     return arrOfShips;
 }
 
+
+
 export const functionality = (function() {
     const startGameBtn = (btn, parent) => {
         btn.addEventListener("click", () => {
@@ -39,12 +42,34 @@ export const functionality = (function() {
     const submitShipBtn = (btn, form) => {
         btn.addEventListener("click", (e) => {
             e.preventDefault();
-  
-            const arrOfShips = getShipInput(form);
 
-            console.log(arrOfShips);
-        })
-        
+            const arrOfShips = getShipInput(form);
+            const gameboard = new Gameboard();
+
+            arrOfShips.forEach(shipObj => {
+                console.log(shipObj.dir);
+                const dir = (shipObj.dir == "up") ? "down" :
+                            (shipObj.dir == "down") ? "up" : shipObj.dir;
+                
+                const label = form.querySelector(`[class*="${shipObj.shipName}-fieldset"]`)
+                console.log(`[class*="${shipObj.shipName}"]`);
+                if(! gameboard.placeShip(shipObj.shipName, Number(shipObj.x), Number(shipObj.y), dir))
+                {
+                    label.classList.remove("valid");
+                    label.classList.add("invalid");
+                    validInput = false;
+                }
+                else
+                {
+                    label.classList.remove("invalid");
+                    label.classList.add("valid");
+                }
+            });
+
+            display.gameboardSelection(document.querySelector(".game-board"),gameboard);
+
+        });
+
     }
 
 
