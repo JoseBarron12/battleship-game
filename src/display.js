@@ -3,7 +3,20 @@ const getRandomNum = (min, max) => {
 }
 
 export const display = (function() {
+    const initialScreen = (parent) => {
+        const header = document.createElement("h1");
+        header.classList.add("welcome-header");
+        header.textContent = "Welcome to Battleship"
+        parent.appendChild(header);
+
+        const btn = document.createElement("button");
+        btn.classList.add("start-game-btn");
+        btn.textContent = "Start New Game";
+        parent.appendChild(btn);
+    }
+    
     const gameboard = (parent) => {
+
 
         const letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
 
@@ -75,6 +88,5 @@ export const display = (function() {
 
         }
     }
-
-    return {gameboard, gamePieces}
+    return {gameboard, gamePieces, initialScreen}
 })();
