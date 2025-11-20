@@ -1,4 +1,5 @@
 import { functionality } from "./functionality";
+import { Gameboard } from "./gameboard";
 
 const getRandomNum = (min, max) => {
     return Math.floor(Math.random() * max);
@@ -169,7 +170,7 @@ export const display = (function() {
                     }
                     else
                     {
-                        column.classList.add(`${j - 1}-${i - 1}`);
+                        column.classList.add(`tile-${j - 1}-${i - 1}`);
 
                         const circle = document.createElement("div");
                         circle.classList.add("circle");
@@ -201,6 +202,32 @@ export const display = (function() {
             piece.style.left = `${xOffset}px`
 
         }
+    };
+
+    const gameboardSelection = (parent, gameBoardClassObj) => {
+        const rows = parent.querySelectorAll("rows");
+        const gameBoard = gameBoardClassObj.gameboard;
+
+        for(let r = 0; r < gameBoard.length; r++)
+        {
+            for(let c = 0; c < gameBoard[r].length; c++)
+            {
+                if(gameBoard[r][c] != false)
+                {
+                    const tile = document.querySelector(`.tile-${c}-${r}`);
+                    
+                    const piece = document.createElement("div");
+                    piece.classList.add("hit-piece");
+                    tile.appendChild(piece);
+
+                }
+            }
+        }
+
     }
-    return {gameboard, gamePieces, initialScreen, selectScreen}
+
+
+
+
+    return {gameboard, gamePieces, initialScreen, selectScreen, gameboardSelection}
 })();
