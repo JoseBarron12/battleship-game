@@ -1,10 +1,24 @@
 import { functionality } from "./functionality";
 import { Gameboard } from "./gameboard";
 import carrierImg from "./images/carrier-piece.svg"
+import battleshipImg from "./images/battleship-piece.svg"
+import submarineImg from "./images/submarine-piece.svg"
+import destroyerImg from "./images/destroyer-piece.svg"
+
+
 
 const getRandomNum = (min, max) => {
     return Math.floor(Math.random() * max);
 }
+
+const battleshipPieces = {
+    carrier: carrierImg,
+    battleship: battleshipImg,
+    submarine: submarineImg,
+    cruiser: submarineImg,
+    destroyer: destroyerImg
+}
+
 
 
 export const display = (function() {
@@ -224,37 +238,37 @@ export const display = (function() {
                 {
                     const tile = document.querySelector(`.tile-${c}-${r}`);
                     
-                    const piece = document.createElement("div");
-                    piece.classList.add("hit-piece");
-                    tile.appendChild(piece);
-
                     const name = gameBoard[r][c].slice(0, gameBoard[r][c].indexOf('-'));
                     const dir = gameBoard[r][c].slice(gameBoard[r][c].indexOf('-') + 1);
-
-                    console.log(dir);
 
                     if(document.querySelector(`.${name}-piece.game-piece`) == null)
                     {
                         const img = document.querySelector("img");
                         img.setAttribute("class", `${name}-piece game-piece`)
-                        img.src = carrierImg;
+                        img.src = battleshipPieces[name];
 
+                        // RIGHT + LEFT SIDE FULLY BROKEN.
                         if(dir == "right")
-                        {
+                        {                            
+                            
+                            const offsetX = tile.getBoundingClientRect().left - img.getBoundingClientRect().left;
                             const offsetY = tile.getBoundingClientRect().top - img.getBoundingClientRect().top;
-
-                            img.style.left = `${tile.offsetLeft + img.getBoundingClientRect().width + 15}px`;
-                            img.style.top = `${offsetY - 10}px`;
+                        
+                            img.style.left = `${img.offsetLeft + offsetX + img.getBoundingClientRect().width + 18}px`;
+                            img.style.top= `${img.offsetTop + offsetY - img.getBoundingClientRect().width + 18}px`;
+                            
                             tile.appendChild(img);
                             img.style.transform = "rotate(90deg) scaleY(1.25)";
                             
                         }
                         else if(dir == "left")
                         {
+                            const offsetX = tile.getBoundingClientRect().left - img.getBoundingClientRect().left;
                             const offsetY = tile.getBoundingClientRect().top - img.getBoundingClientRect().top;
-
-                            img.style.left = `${tile.offsetLeft + img.getBoundingClientRect().width + 15}px`;
-                            img.style.top = `${offsetY - 10}px`;
+                            
+                            img.style.left = `${img.offsetLeft + offsetX + img.getBoundingClientRect().width + 15}px`;
+                            img.style.top = `${img.offsetTop + offsetY - img.getBoundingClientRect().width + 15}px`;
+                            
                             tile.appendChild(img);
                             img.style.transform = "rotate(90deg) scaleY(1.25)";
                         }
