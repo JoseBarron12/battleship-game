@@ -24,19 +24,19 @@ export class Gameboard {
     get missedAttacks() { return this._missedAttacks; }
     set missedAttacks(newAmt) { this._missedAttacks = newAmt; }
 
-    placeGameboardPiece(initX, finalX, initY, finalY, shipName) {
+    placeGameboardPiece(initX, finalX, initY, finalY, shipName, dir) {
         if(initY === finalY) // x-direction placement
         {   
             for(let i = initX; i <= finalX; i++)
             {
-                this.gameboard[initY][i] = shipName;
+                this.gameboard[initY][i] = shipName + '-' + dir;
             }
         }
         else // y-direction placement
         {
             for(let i = initY; i <= finalY; i++)
             {
-                this.gameboard[i][initX] = shipName;
+                this.gameboard[i][initX] = shipName + '-' + dir;
             }
         }
     }
@@ -88,19 +88,19 @@ export class Gameboard {
         switch(dir) {
             case "up": 
                 if(y + shipLength > 9 || !this.isGameboardEmpty(x, x, y, y + shipLength)) return false;
-                this.placeGameboardPiece(x, x, y, y + shipLength, nameOfShip.toLowerCase());
+                this.placeGameboardPiece(x, x, y, y + shipLength, nameOfShip.toLowerCase(), direction);
                 break;
             case "down":
                 if(y - shipLength < 0 || !this.isGameboardEmpty(x, x, y - shipLength, y )) return false;
-                this.placeGameboardPiece(x, x, y - shipLength, y, nameOfShip.toLowerCase());
+                this.placeGameboardPiece(x, x, y - shipLength, y, nameOfShip.toLowerCase(), direction);
                 break;
             case "left":
                 if(x - shipLength < 0 || !this.isGameboardEmpty(x - shipLength, x, y, y)) return false;
-                this.placeGameboardPiece(x - shipLength, x,  y, y, nameOfShip.toLowerCase());
+                this.placeGameboardPiece(x - shipLength, x,  y, y, nameOfShip.toLowerCase(), direction);
                 break;
             case "right":
                 if(x + shipLength > 9 || !this.isGameboardEmpty(x, x + shipLength, y, y)) return false
-                this.placeGameboardPiece(x, x + shipLength, y, y, nameOfShip.toLowerCase());
+                this.placeGameboardPiece(x, x + shipLength, y, y, nameOfShip.toLowerCase(), direction);
                 break;
         }
 
