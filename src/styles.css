@@ -397,6 +397,7 @@ option {
     justify-content: center;
 }
 
+
 .row > .column > .circle {
     width: 8px;
     height: 8px;
@@ -421,6 +422,11 @@ option {
     align-items: center;
     color: var(--secondary-color);
 }
+
+.game-piece {
+  position: absolute;
+}
+
 
 .battle-ship-holder, .piece-holder {
     margin: 16px 0px;

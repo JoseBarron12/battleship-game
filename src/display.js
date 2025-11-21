@@ -1,9 +1,11 @@
 import { functionality } from "./functionality";
 import { Gameboard } from "./gameboard";
+import carrierImg from "./images/carrier-piece.svg"
 
 const getRandomNum = (min, max) => {
     return Math.floor(Math.random() * max);
 }
+
 
 export const display = (function() {
     const initialScreen = (parent) => {
@@ -226,6 +228,49 @@ export const display = (function() {
                     piece.classList.add("hit-piece");
                     tile.appendChild(piece);
 
+                    const name = gameBoard[r][c].slice(0, gameBoard[r][c].indexOf('-'));
+                    const dir = gameBoard[r][c].slice(gameBoard[r][c].indexOf('-') + 1);
+
+                    console.log(dir);
+
+                    if(document.querySelector(`.${name}-piece.game-piece`) == null)
+                    {
+                        const img = document.querySelector("img");
+                        img.setAttribute("class", `${name}-piece game-piece`)
+                        img.src = carrierImg;
+
+                        if(dir == "right")
+                        {
+                            const offsetY = tile.getBoundingClientRect().top - img.getBoundingClientRect().top;
+
+                            img.style.left = `${tile.offsetLeft + img.getBoundingClientRect().width + 15}px`;
+                            img.style.top = `${offsetY - 10}px`;
+                            tile.appendChild(img);
+                            img.style.transform = "rotate(90deg) scaleY(1.25)";
+                            
+                        }
+                        else if(dir == "left")
+                        {
+                            const offsetY = tile.getBoundingClientRect().top - img.getBoundingClientRect().top;
+
+                            img.style.left = `${tile.offsetLeft + img.getBoundingClientRect().width + 15}px`;
+                            img.style.top = `${offsetY - 10}px`;
+                            tile.appendChild(img);
+                            img.style.transform = "rotate(90deg) scaleY(1.25)";
+                        }
+                        else
+                        {
+                            const offsetX = tile.getBoundingClientRect().left - img.getBoundingClientRect().left;
+                            const offsetY = tile.getBoundingClientRect().top - img.getBoundingClientRect().top;
+
+                            img.style.left = `${img.offsetLeft + offsetX + 5}px`;
+                            img.style.top = `${img.offsetTop + offsetY}px`;
+                            
+                            tile.appendChild(img);
+                        }
+
+                    }
+                    
                 }
             }
         }
