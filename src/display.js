@@ -5,8 +5,6 @@ import battleshipImg from "./images/battleship-piece.svg"
 import submarineImg from "./images/submarine-piece.svg"
 import destroyerImg from "./images/destroyer-piece.svg"
 
-
-
 const getRandomNum = (min, max) => {
     return Math.floor(Math.random() * max);
 }
@@ -18,6 +16,33 @@ const battleshipPieces = {
     cruiser: submarineImg,
     destroyer: destroyerImg
 }
+
+const createSVG = ({ className, viewBox, pathD, titleText }) => {
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+  svg.setAttribute("viewBox", viewBox);
+  if (className) svg.classList.add(...className.split(" "));
+
+  // Add <title> for accessibility
+  if (titleText) {
+    const title = document.createElementNS(
+      "http://www.w3.org/2000/svg",
+      "title",
+    );
+    title.textContent = titleText;
+    svg.appendChild(title);
+  }
+
+  // Add <path>
+  const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  path.setAttribute("d", pathD);
+  svg.appendChild(path);
+
+  return svg;
+};
+
+
+
 
 
 
