@@ -395,8 +395,8 @@ option {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
-
 
 .row > .column > .circle {
     width: 8px;
@@ -425,6 +425,13 @@ option {
 
 .game-piece {
   position: absolute;
+  top: 0px;
+  left: 4px;
+}
+
+.game-piece-rotate {
+  transform-origin: top left;
+  transform: rotate(270deg) scaleY(1.3) scaleX(0.9) translateX(-45px);
 }
 
 

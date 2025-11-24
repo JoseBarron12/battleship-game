@@ -246,41 +246,12 @@ export const display = (function() {
                         const img = document.querySelector("img");
                         img.setAttribute("class", `${name}-piece game-piece`)
                         img.src = battleshipPieces[name];
+                        img.style.top = "0px";
+                        tile.appendChild(img);
 
-                        // RIGHT + LEFT SIDE FULLY BROKEN.
-                        if(dir == "right")
-                        {                            
-                            
-                            const offsetX = tile.getBoundingClientRect().left - img.getBoundingClientRect().left;
-                            const offsetY = tile.getBoundingClientRect().top - img.getBoundingClientRect().top;
-                        
-                            img.style.left = `${img.offsetLeft + offsetX + img.getBoundingClientRect().width + 18}px`;
-                            img.style.top= `${img.offsetTop + offsetY - img.getBoundingClientRect().width + 18}px`;
-                            
-                            tile.appendChild(img);
-                            img.style.transform = "rotate(90deg) scaleY(1.25)";
-                            
-                        }
-                        else if(dir == "left")
+                        if(dir == "left" || dir == "right")
                         {
-                            const offsetX = tile.getBoundingClientRect().left - img.getBoundingClientRect().left;
-                            const offsetY = tile.getBoundingClientRect().top - img.getBoundingClientRect().top;
-                            
-                            img.style.left = `${img.offsetLeft + offsetX + img.getBoundingClientRect().width + 15}px`;
-                            img.style.top = `${img.offsetTop + offsetY - img.getBoundingClientRect().width + 15}px`;
-                            
-                            tile.appendChild(img);
-                            img.style.transform = "rotate(90deg) scaleY(1.25)";
-                        }
-                        else
-                        {
-                            const offsetX = tile.getBoundingClientRect().left - img.getBoundingClientRect().left;
-                            const offsetY = tile.getBoundingClientRect().top - img.getBoundingClientRect().top;
-
-                            img.style.left = `${img.offsetLeft + offsetX + 5}px`;
-                            img.style.top = `${img.offsetTop + offsetY}px`;
-                            
-                            tile.appendChild(img);
+                            img.classList.add("game-piece-rotate");
                         }
 
                     }
