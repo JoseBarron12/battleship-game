@@ -116,7 +116,7 @@ export class Gameboard {
         if(this.isGameTileEmpty(x, y)) {
             this.missedAttacks = this.missedAttacks + 1;
         } else {
-            const nameOfShip = this.gameboard[y][x];
+            const nameOfShip = this.gameboard[y][x].slice(0, this.gameboard[y][x].indexOf('-'));
             this.fleetOfShips[nameOfShip].hit();
         }
         return true;
@@ -136,6 +136,16 @@ export class Gameboard {
             if( !this.fleetOfShips[key].isSunk()) return false;
         }
         return true;
+    }
+
+    clearBoard() {
+        for(let i = 0; i < this.gameboard.length; i++ )
+        {
+            for(let j = 0; j < this.gameboard[0].length; j++ )
+            {
+                this.gameboard[i][j] = false;
+            }
+        }
     }
 
 }
