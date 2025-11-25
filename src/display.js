@@ -41,11 +41,6 @@ const createSVG = ({ className, viewBox, pathD, titleText }) => {
   return svg;
 };
 
-
-
-
-
-
 export const display = (function() {
     const initialScreen = (parent) => {
         const screen = document.createElement("div");
@@ -157,10 +152,42 @@ export const display = (function() {
 
         }
 
+        const buttonsDiv = document.createElement("div");
+        buttonsDiv.classList.add("form-btns");
+        form.appendChild(buttonsDiv);
+
+        const resetBtn = document.createElement("button");
+        resetBtn.classList.add("reset-btn");
+        
+        const reloadIcon = createSVG({
+        className: "my-reload-icon",
+        viewBox: "0 0 24 24",
+        pathD:
+            "M2 12C2 16.97 6.03 21 11 21C13.39 21 15.68 20.06 17.4 18.4L15.9 16.9C14.63 18.25 12.86 19 11 19C4.76 19 1.64 11.46 6.05 7.05C10.46 2.64 18 5.77 18 12H15L19 16H19.1L23 12H20C20 7.03 15.97 3 11 3C6.03 3 2 7.03 2 12Z",
+        titleText: "reload",
+        });
+
+        resetBtn.appendChild(reloadIcon);
+        buttonsDiv.appendChild(resetBtn);
+
         const submitBtn = document.createElement("button");
         submitBtn.classList.add("submit-btn");
-        submitBtn.textContent = "Begin Battle"
-        form.appendChild(submitBtn);
+        submitBtn.textContent = "START"
+        buttonsDiv.appendChild(submitBtn);
+
+        const shuffleBtn = document.createElement("button");
+        shuffleBtn.classList.add("shuffle-btn");
+
+        const shuffleIcon = createSVG({
+        className: "shuffle-icon",
+        viewBox: "0 0 24 24",
+        titleText: "shuffle-variant",
+        pathD:
+            "M17,3L22.25,7.5L17,12L22.25,16.5L17,21V18H14.26L11.44,15.18L13.56,13.06L15.5,15H17V12L17,9H15.5L6.5,18H2V15H5.26L14.26,6H17V3M2,6H6.5L9.32,8.82L7.2,10.94L5.26,9H2V6Z",
+        });
+
+        shuffleBtn.appendChild(shuffleIcon);
+        buttonsDiv.appendChild(shuffleBtn);
 
         functionality.submitShipBtn(submitBtn, form);
     }

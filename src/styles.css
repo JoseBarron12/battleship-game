@@ -232,9 +232,14 @@ body {
   margin-left: 16px;
 }
 
+.form-btns {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  padding: 8px;
+}
 
-.select-screen > form > .submit-btn {
-  margin-top: 8px;
+.form-btns > button {
   background-color:  var(--board-color);
   color: rgba(255, 255, 255, 0.75);
   border: none;
@@ -242,6 +247,13 @@ body {
   text-align: center;
   border: 2px solid rgba(255, 255, 255, 0.35);
   font-weight: bold;
+  padding: 4px 8px;
+
+}
+.form-btns > button > svg {
+  width: 24px;
+  height: 24px;
+  fill: rgba(255, 255, 255, 0.75);
 }
 
 select {
