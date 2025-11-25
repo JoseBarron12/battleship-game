@@ -77,6 +77,22 @@ export const functionality = (function() {
 
     }
 
+    const resetFormBtn = (btn, form) => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            
+            const fields = form.querySelectorAll("fieldset");
 
-    return {startGameBtn, submitShipBtn}
+            fields.forEach(field => {
+                const selects = field.querySelectorAll("select");
+
+                selects[0].value = "0"; // x-coord
+                selects[1].value = "0"; // y-coord
+                selects[2].value = "up"; // direction
+                    
+            });
+        })
+    }
+
+    return {startGameBtn, submitShipBtn, resetFormBtn}
 })();

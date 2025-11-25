@@ -190,6 +190,7 @@ export const display = (function() {
         buttonsDiv.appendChild(shuffleBtn);
 
         functionality.submitShipBtn(submitBtn, form);
+        functionality.resetFormBtn(resetBtn, form);
     }
 
     const gameboard = (parent, isOpponent) => {
