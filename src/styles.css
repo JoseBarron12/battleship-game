@@ -236,7 +236,7 @@ body {
   display: flex;
   gap: 8px;
   justify-content: center;
-  padding: 8px;
+  padding: 4px;
 }
 
 .form-btns > button {
@@ -247,7 +247,7 @@ body {
   text-align: center;
   border: 2px solid rgba(255, 255, 255, 0.35);
   font-weight: bold;
-  padding: 4px 8px;
+  padding: 2px 8px;
 
 }
 .form-btns > button > svg {

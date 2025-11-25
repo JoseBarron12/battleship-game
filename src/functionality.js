@@ -28,8 +28,6 @@ const getShipInput = (form) => {
     return arrOfShips;
 }
 
-
-
 export const functionality = (function() {
     const startGameBtn = (btn, parent) => {
         btn.addEventListener("click", () => {
