@@ -1,5 +1,14 @@
 import { Ship } from "./ship";
 
+const getRandomNum = (min, max) => {
+    return Math.floor(Math.random() * max);
+}
+
+const nameOfShips = ["destroyer", "submarine", "cruiser", "battleship", "carrier"];
+
+const directions = ["left", "right", "up", "down"];
+
+
 export class Gameboard {
     constructor() {
         this._gameboard = new Array(10);
@@ -147,5 +156,40 @@ export class Gameboard {
             }
         }
     }
+
+    placeRandomPieces(){
+        this.clearBoard();
+        
+        let arrOfShipsObj = [];
+        
+        for(let i = 0; i < nameOfShips.length; i++)
+        {
+            let done = false;
+            
+            while(!done)
+            {
+                const x = getRandomNum(0, 10);
+                const y = getRandomNum(0, 10);
+                const dir = directions[getRandomNum(0, directions.length)];
+                const name = nameOfShips[i];
+
+                if(this.placeShip(name, x, y, dir))
+                {
+                    arrOfShipsObj.push( {
+                        shipName: name,
+                        coordX: x,
+                        coordY: y,
+                        direction: dir    
+                    })
+                    done = true;
+                }
+
+            }
+        }
+
+        return arrOfShipsObj;
+    }
+
+
 
 }

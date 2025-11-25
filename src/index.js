@@ -1,4 +1,5 @@
 import { display } from "./display"
+import { Gameboard } from "./gameboard";
 import "./styles.css"
 
 display.gameboard(document.querySelector(".game-board"));
@@ -16,3 +17,10 @@ console.log(hitPieces.children.length);
 
 const missPieces = document.querySelector(".miss-pieces");
 console.log(missPieces.children.length);
+
+
+const gameTest = new Gameboard();
+
+const arrOfObj = gameTest.placeRandomPieces();
+
+console.log(arrOfObj);
