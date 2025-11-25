@@ -132,7 +132,7 @@ describe('placeShip() method' , () => {
 });
 
 
-describe("receiveAttack()method", () => {
+describe("receiveAttack() method", () => {
     const gameboardTest = new Gameboard();
     
     test("calling function with non-number input return false", () => {
@@ -221,6 +221,15 @@ describe("areAllShipsSunk() method", () => {
         expect(gameboardTest.areAllShipsSunk()).toBeTruthy();
     });
 
+    test('gameboard array filled with false when reset board', () => {
+        const gameBoard = new Array(10);
+        for(let i = 0; i < gameBoard.length; i++) {
+            gameBoard[i] = new Array(10).fill(false);
+        }
+
+        gameboardTest.clearBoard();
+        expect(gameboardTest.gameboard).toEqual(gameBoard);
+    });
 
 });
 
