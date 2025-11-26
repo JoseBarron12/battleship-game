@@ -111,7 +111,8 @@ export const functionality = (function() {
 
                 selects[0].value = shipObj.coordX; // x-coord
                 selects[1].value = shipObj.coordY; // y-coord
-                selects[2].value = dir; // direction
+                selects[2].value = (dir == "up") ? "down" :
+                            (dir == "down") ? "up" : dir;; // direction
 
 
                 if(!gameboard.placeShip(shipObj.shipName, Number(shipObj.coordX), Number(shipObj.coordY), dir))
