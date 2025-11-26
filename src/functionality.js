@@ -189,8 +189,16 @@ export const functionality = (function() {
 
     const tileBtn = (tile, x, y) => {
         const displayCoords = () => {
+            const currentMiss = oppGameBoard.missedAttacks;
+            
             oppGameBoard.receiveAttack(x, y);
-            console.log(oppGameBoard);
+            
+            const newMiss = oppGameBoard.missedAttacks;
+
+            const isHit = (currentMiss == newMiss) ? true : false;
+
+            display.gamePiece(tile, isHit);
+
             tile.removeEventListener("click", displayCoords);
         }
         
