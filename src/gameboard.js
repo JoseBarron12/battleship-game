@@ -28,6 +28,8 @@ export class Gameboard {
     }
 
     get gameboard() { return this._gameboard; }
+    set gameboard(newBoard) { this._gameboard = newBoard; }
+    
     get fleetOfShips() { return this._fleetOfShips; }
 
     get missedAttacks() { return this._missedAttacks; }

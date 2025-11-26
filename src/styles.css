@@ -439,6 +439,7 @@ option {
   position: absolute;
   top: 0px;
   left: 4px;
+  z-index: 1;
 }
 
 .game-piece-rotate {

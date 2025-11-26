@@ -1,3 +1,4 @@
+import { playerGameBoard } from ".";
 import { display } from "./display";
 import { Gameboard } from "./gameboard";
 
@@ -90,6 +91,8 @@ export const functionality = (function() {
             
             if(validInput)
             {
+                playerGameBoard.gameboard = gameboard;
+                console.log(playerGameBoard);
                 display.gameboard(document.querySelector(".opponent-board"), true);
             }
 
@@ -102,7 +105,6 @@ export const functionality = (function() {
             e.preventDefault();
             
             const fields = form.querySelectorAll("fieldset");
-
 
             fields.forEach(field => {
                 field.classList.remove("valid");
