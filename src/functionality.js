@@ -2,6 +2,7 @@ import { playerGameBoard } from ".";
 import { display } from "./display";
 import { Gameboard } from "./gameboard";
 
+
 const getShipInput = (form) => {
     const fields = form.querySelectorAll("fieldset");
             
@@ -171,7 +172,30 @@ export const functionality = (function() {
         })
     }   
 
+    const opponentGameBoard = (board) => {
+        const rows = board.querySelectorAll(".row");
+
+        let num = 0;
+        for(let i = 1; i < rows.length; i++)
+        {
+            const columns = rows[i].querySelectorAll(".column");
+
+            for(let j = 1; j < columns.length; j++)
+            {
+                
+                functionality.tileBtn(columns[j], i - 1, j - 1);
+            }
+        }
+    }
+
+    const tileBtn = (tile, x, y) => {
+        
+        tile.addEventListener("click", () => {
+            console.log(`${x}, ${y}`);
+        })
+    }
 
 
-    return {startGameBtn, submitShipBtn, resetFormBtn, shuffleFormBtn, selectInputField}
+
+    return {startGameBtn, submitShipBtn, resetFormBtn, shuffleFormBtn, selectInputField, opponentGameBoard, tileBtn}
 })();

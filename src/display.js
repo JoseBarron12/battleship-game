@@ -251,7 +251,11 @@ export const display = (function() {
 
                 }
             }
+        }
 
+        if(isOpponent)
+        {
+            functionality.opponentGameBoard(board);
         }
     };
 
