@@ -191,6 +191,7 @@ export const display = (function() {
 
         functionality.submitShipBtn(submitBtn, form);
         functionality.resetFormBtn(resetBtn, form);
+        functionality.shuffleFormBtn(shuffleBtn, form);
     }
 
     const gameboard = (parent, isOpponent) => {
@@ -276,6 +277,14 @@ export const display = (function() {
 
     const gameboardSelection = (parent, gameBoardClassObj) => {
         
+        const ships = parent.querySelectorAll(".game-piece");
+        if(ships != null)
+        {
+            ships.forEach(ship => {
+                ship.remove();
+            })
+        }
+        
         const pieces = parent.querySelectorAll(".hit-piece");
         pieces.forEach(piece => {
             piece.remove();
@@ -296,7 +305,7 @@ export const display = (function() {
 
                     if(document.querySelector(`.${name}-piece.game-piece`) == null)
                     {
-                        const img = document.querySelector("img");
+                        const img = document.createElement("img");
                         img.setAttribute("class", `${name}-piece game-piece`)
                         img.src = battleshipPieces[name];
                         img.style.top = "0px";
