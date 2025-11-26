@@ -294,34 +294,37 @@ export const display = (function() {
             piece.remove();
         })
         
-        const gameBoard = gameBoardClassObj.gameboard;
-
-        for(let r = 0; r < gameBoard.length; r++)
+        if(gameBoardClassObj != undefined)
         {
-            for(let c = 0; c < gameBoard[r].length; c++)
+            const gameBoard = gameBoardClassObj.gameboard;
+
+            for(let r = 0; r < gameBoard.length; r++)
             {
-                if(gameBoard[r][c] != false)
+                for(let c = 0; c < gameBoard[r].length; c++)
                 {
-                    const tile = document.querySelector(`.tile-${c}-${r}`);
-                    
-                    const name = gameBoard[r][c].slice(0, gameBoard[r][c].indexOf('-'));
-                    const dir = gameBoard[r][c].slice(gameBoard[r][c].indexOf('-') + 1);
-
-                    if(document.querySelector(`.${name}-piece.game-piece`) == null)
+                    if(gameBoard[r][c] != false)
                     {
-                        const img = document.createElement("img");
-                        img.setAttribute("class", `${name}-piece game-piece`)
-                        img.src = battleshipPieces[name];
-                        img.style.top = "0px";
-                        tile.appendChild(img);
+                        const tile = document.querySelector(`.tile-${c}-${r}`);
+                        
+                        const name = gameBoard[r][c].slice(0, gameBoard[r][c].indexOf('-'));
+                        const dir = gameBoard[r][c].slice(gameBoard[r][c].indexOf('-') + 1);
 
-                        if(dir == "left" || dir == "right")
+                        if(document.querySelector(`.${name}-piece.game-piece`) == null)
                         {
-                            img.classList.add("game-piece-rotate");
-                        }
+                            const img = document.createElement("img");
+                            img.setAttribute("class", `${name}-piece game-piece`)
+                            img.src = battleshipPieces[name];
+                            img.style.top = "0px";
+                            tile.appendChild(img);
 
+                            if(dir == "left" || dir == "right")
+                            {
+                                img.classList.add("game-piece-rotate");
+                            }
+
+                        }
+                        
                     }
-                    
                 }
             }
         }

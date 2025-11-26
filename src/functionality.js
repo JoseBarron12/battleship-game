@@ -104,6 +104,8 @@ export const functionality = (function() {
         btn.addEventListener("click", (e) => {
             e.preventDefault();
             
+            display.gameboardSelection(document.querySelector(".game-board"));
+
             const fields = form.querySelectorAll("fieldset");
 
             fields.forEach(field => {
