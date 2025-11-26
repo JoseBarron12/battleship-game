@@ -309,11 +309,13 @@ option {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 16px;
   padding: 16px 8px;
   color: rgba(255, 255, 255, 0.55);
   overflow: hidden;
   box-shadow: var(--inset-color) 1px 1px 1px 1px;
+  flex-grow: 1;
 }
 
 .current-player {
@@ -325,6 +327,7 @@ option {
 .play-desc {
   width: calc(100%);
   text-align: center;
+  font-size: small;
 }
 
 .current-player-icon {
@@ -337,6 +340,7 @@ option {
 
 .player-icon {
   fill: rgba(255, 255, 255, 0.35);
+  display: none;
 }
 
 .player-icon.computer {
@@ -460,12 +464,17 @@ option {
     position: relative;
 }
 
+
 .battleship {
   width: 45px;
   height: 160px;
   position: absolute;
   top: 16px;
   left: 32px;
+}
+
+.battleship > img {
+  filter: none;
 }
 
 .carrier {
