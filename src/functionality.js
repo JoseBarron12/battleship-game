@@ -93,7 +93,6 @@ export const functionality = (function() {
             if(validInput)
             {
                 playerGameBoard.gameboard = gameboard;
-                console.log(playerGameBoard);
                 display.gameboard(document.querySelector(".opponent-board"), true);
             }
 
@@ -196,7 +195,9 @@ export const functionality = (function() {
             const newMiss = oppGameBoard.missedAttacks;
 
             const isHit = (currentMiss == newMiss) ? true : false;
-
+            
+            display.gamePlay(x, y, false, isHit);
+            
             display.gamePiece(tile, isHit);
 
             tile.removeEventListener("click", displayCoords);

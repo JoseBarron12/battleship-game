@@ -336,6 +336,33 @@ export const display = (function() {
         parent.appendChild(piece);
     }
 
+    const gamePlay = (x, y, isComputer, isHit) => {
+        const player = (isComputer) ? "Computer Turn" : "Player Turn";
+        const play = (isHit) ? "Hit" : "Miss";
 
-    return {gameboard, gamePieces, initialScreen, selectScreen, gameboardSelection, gamePiece}
+        const currentPlayer = document.querySelector(".current-player");
+        currentPlayer.textContent = player;
+
+        const letters = "ABCDEFGHIJ";
+        
+        const currentPlay = document.querySelector(".play-desc");
+        currentPlay.textContent = `${play} at [${y + 1},${letters[x]}]`;
+
+        const playerIcon = document.querySelector(".player-icon.player");
+        const computerIcon = document.querySelector(".player-icon.computer");
+        
+        if(isComputer)
+        {
+            playerIcon.style.display = "none";
+            computerIcon.style.display = "block";
+        }
+        else
+        {
+            playerIcon.style.display = "block";
+            computerIcon.style.display = "none";
+        }   
+    }
+
+
+    return {gameboard, gamePieces, initialScreen, selectScreen, gameboardSelection, gamePiece, gamePlay}
 })();

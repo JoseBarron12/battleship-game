@@ -324,9 +324,7 @@ option {
 
 .play-desc {
   width: calc(100%);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  text-align: center;
 }
 
 .current-player-icon {
@@ -527,8 +525,8 @@ option {
 
 
 .hit-piece, .miss-piece{
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
   border-radius: 100%;
   box-shadow: var(--inset-color) 1px 1px 1px 1px;
   position: absolute;
