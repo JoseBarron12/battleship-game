@@ -1,4 +1,4 @@
-import { playerGameBoard } from ".";
+import { oppGameBoard, playerGameBoard } from ".";
 import { display } from "./display";
 import { Gameboard } from "./gameboard";
 
@@ -175,7 +175,6 @@ export const functionality = (function() {
     const opponentGameBoard = (board) => {
         const rows = board.querySelectorAll(".row");
 
-        let num = 0;
         for(let i = 1; i < rows.length; i++)
         {
             const columns = rows[i].querySelectorAll(".column");
@@ -189,12 +188,15 @@ export const functionality = (function() {
     }
 
     const tileBtn = (tile, x, y) => {
+        const displayCoords = () => {
+            oppGameBoard.receiveAttack(x, y);
+            console.log(oppGameBoard);
+            tile.removeEventListener("click", displayCoords);
+        }
         
-        tile.addEventListener("click", () => {
-            console.log(`${x}, ${y}`);
-        })
-    }
+        tile.addEventListener("click", displayCoords);
 
+    }
 
 
     return {startGameBtn, submitShipBtn, resetFormBtn, shuffleFormBtn, selectInputField, opponentGameBoard, tileBtn}

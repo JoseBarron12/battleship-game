@@ -8,14 +8,11 @@ display.initialScreen(document.querySelector(".opponent-board"));
 display.gamePieces(document.querySelector(".hit-pieces"),true);
 display.gamePieces(document.querySelector(".miss-pieces"), false);
 
-
 const playerGameBoard = new Gameboard();
 
-console.log(playerGameBoard);
+const oppGameBoard = new Gameboard();
+oppGameBoard.placeRandomPieces();
 
-const opponentGameBoard = new Gameboard();
-opponentGameBoard.placeRandomPieces();
+console.log(oppGameBoard);
 
-console.log(opponentGameBoard);
-
-export{playerGameBoard, opponentGameBoard}
+export{playerGameBoard, oppGameBoard}
