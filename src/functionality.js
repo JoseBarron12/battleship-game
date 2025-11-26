@@ -47,12 +47,12 @@ export const functionality = (function() {
             const gameboard = new Gameboard();
 
             arrOfShips.forEach(shipObj => {
-                console.log(shipObj.dir);
+                
                 const dir = (shipObj.dir == "up") ? "down" :
                             (shipObj.dir == "down") ? "up" : shipObj.dir;
                 
                 const label = form.querySelector(`[class*="${shipObj.shipName}-fieldset"]`)
-                console.log(`[class*="${shipObj.shipName}"]`);
+                
                 if(! gameboard.placeShip(shipObj.shipName, Number(shipObj.x), Number(shipObj.y), dir))
                 {
                     label.classList.remove("valid");
@@ -90,9 +90,48 @@ export const functionality = (function() {
                 selects[1].value = "0"; // y-coord
                 selects[2].value = "up"; // direction
                     
-            });
+            })
         })
     }
 
-    return {startGameBtn, submitShipBtn, resetFormBtn}
+    const shuffleFormBtn = (btn, form) => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            const arrOfShips = new Gameboard().placeRandomPieces();
+            const gameboard = new Gameboard();
+
+            arrOfShips.forEach(shipObj => {
+                
+                const dir = shipObj.direction;
+                
+                const label = form.querySelector(`[class*="${shipObj.shipName}-fieldset"]`)
+                
+                const selects = label.querySelectorAll("select");
+
+                selects[0].value = shipObj.coordX; // x-coord
+                selects[1].value = shipObj.coordY; // y-coord
+                selects[2].value = dir; // direction
+
+
+                if(!gameboard.placeShip(shipObj.shipName, Number(shipObj.coordX), Number(shipObj.coordY), dir))
+                {
+                    label.classList.remove("valid");
+                    label.classList.add("invalid");
+                }
+                else
+                {
+                    label.classList.remove("invalid");
+                    label.classList.add("valid");
+                }
+            });
+
+            display.gameboardSelection(document.querySelector(".game-board"),gameboard);
+
+        })
+    }
+
+
+
+    return {startGameBtn, submitShipBtn, resetFormBtn, shuffleFormBtn}
 })();
