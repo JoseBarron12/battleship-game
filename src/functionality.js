@@ -103,14 +103,19 @@ export const functionality = (function() {
             
             const fields = form.querySelectorAll("fieldset");
 
+
             fields.forEach(field => {
+                field.classList.remove("valid");
+                field.classList.add("invalid");
+                
                 const selects = field.querySelectorAll("select");
 
                 selects[0].value = "0"; // x-coord
                 selects[1].value = "0"; // y-coord
                 selects[2].value = "up"; // direction
                     
-            })
+            });
+
         })
     }
 
