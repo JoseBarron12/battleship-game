@@ -99,6 +99,7 @@ export const display = (function() {
 
             const selectX =  document.createElement("select");
             selectX.setAttribute("id", `${shipNames[i]}-x`);
+            functionality.selectInputField(selectX, form);
 
             for(let j = 0; j < 10; j++)
             {
@@ -117,6 +118,7 @@ export const display = (function() {
 
             const selectY =  document.createElement("select");
             selectY.setAttribute("id", `${shipNames[i]}-y`);
+            functionality.selectInputField(selectY, form);
 
             const letters = "ABCDEFGHIJ";
 
@@ -136,9 +138,9 @@ export const display = (function() {
 
             const directions = ["up", "down", "left", "right"];
 
-            const selectDir=  document.createElement("select");
+            const selectDir =  document.createElement("select");
             selectDir.setAttribute("id", `${shipNames[i]}-dir`);
-
+            functionality.selectInputField(selectDir, form);
 
             for(let j = 0; j < 4; j++)
             {
@@ -149,7 +151,6 @@ export const display = (function() {
             }
 
             field.appendChild(selectDir);
-
         }
 
         const buttonsDiv = document.createElement("div");

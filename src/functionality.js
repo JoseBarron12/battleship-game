@@ -28,6 +28,26 @@ const getShipInput = (form) => {
     return arrOfShips;
 }
 
+const getFormShipInputToBoard = (arrOfShips, gameboard, form) => {
+    arrOfShips.forEach(shipObj => {     
+        const dir = (shipObj.dir == "up") ? "down" :
+                            (shipObj.dir == "down") ? "up" : shipObj.dir;
+                
+        const label = form.querySelector(`[class*="${shipObj.shipName}-fieldset"]`)
+                
+        if(! gameboard.placeShip(shipObj.shipName, Number(shipObj.x), Number(shipObj.y), dir))
+        {
+            label.classList.remove("valid");
+            label.classList.add("invalid");
+        }
+        else
+        {
+            label.classList.remove("invalid");
+            label.classList.add("valid");
+        }
+    });
+}
+
 export const functionality = (function() {
     const startGameBtn = (btn, parent) => {
         btn.addEventListener("click", () => {
@@ -132,7 +152,19 @@ export const functionality = (function() {
         })
     }
 
+    const selectInputField = (input, form) => {
+        input.addEventListener("input", () => {
+  
+            const arrOfShips = getShipInput(form);
+            const gameboard = new Gameboard();
+
+            getFormShipInputToBoard(arrOfShips, gameboard, form);
+            
+            display.gameboardSelection(document.querySelector(".game-board"),gameboard);
+        })
+    }   
 
 
-    return {startGameBtn, submitShipBtn, resetFormBtn, shuffleFormBtn}
+
+    return {startGameBtn, submitShipBtn, resetFormBtn, shuffleFormBtn, selectInputField}
 })();
