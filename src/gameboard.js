@@ -157,6 +157,14 @@ export class Gameboard {
                 this.gameboard[i][j] = false;
             }
         }
+
+        for(let key in this.fleetOfShips)
+        {
+            this.fleetOfShips[key].hits = 0;
+            this.fleetOfShips[key].placed = false;
+            this.missedAttacks = 0;
+        }
+
     }
 
     placeRandomPieces(){

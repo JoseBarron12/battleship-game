@@ -73,11 +73,12 @@ export const display = (function() {
         if(winScreen) // Reset both boards
         {
             playerGameBoard.clearBoard();
-            oppGameBoard.clearBoard();
-            
+            oppGameBoard.placeRandomPieces();
+
             document.querySelector('.game-board').replaceChildren();
             display.gameboard(document.querySelector(".game-board"));
 
+            display.initialGameScreen();
             
         }
 
@@ -392,5 +393,22 @@ export const display = (function() {
         oppBoard.appendChild(pauseScreen);
     }
 
-    return {gameboard, gamePieces, initialScreen, selectScreen, gameboardSelection, gamePiece, gamePlay, gamePauseScreen}
+    const initialGameScreen = () => {
+
+        const currentPlayer = document.querySelector(".current-player");
+        currentPlayer.textContent = '';
+
+        const currentPlay = document.querySelector(".play-desc");
+        currentPlay.textContent = '';
+
+        const playerIcon = document.querySelector(".player-icon.player");
+        playerIcon.style.display = "none";
+        
+        const computerIcon = document.querySelector(".player-icon.computer");
+        computerIcon.style.display = "none";
+        
+    }
+
+
+    return {gameboard, gamePieces, initialScreen, selectScreen, gameboardSelection, gamePiece, gamePlay, gamePauseScreen, initialGameScreen}
 })();
