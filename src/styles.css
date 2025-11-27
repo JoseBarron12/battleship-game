@@ -126,12 +126,25 @@ body {
     min-height: 0;
 }
 
-.opponent-board {
-    border-radius: 16px 16px 0px 0px;
-    background-color: var(--secondary-color);
-    border: 8px solid var(--board-color);
-    padding: 8px;
+.opponent-board{
+  border-radius: 16px 16px 0px 0px;
+  background-color: var(--secondary-color);
+  border: 8px solid var(--board-color);
+  padding: 8px;
 }
+
+.pause-screen {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border-radius: 16px;
+  background-color: rgba(255, 255, 255, 0.50);
+  padding: 8px;
+  z-index: 999;
+  width: inherit;
+  height: inherit;
+}
+
 
 .opponent-board > .board {
   border: 1px solid var(--board-color);
@@ -143,6 +156,7 @@ body {
   grid-template-rows: repeat(11, 1fr);
   padding: 2px 16px 16px 2px;
   font-family: 'Black Ops One';
+  position: relative;
 }
 
 .opponent-board > .welcome-screen {
@@ -531,7 +545,6 @@ option {
 .miss-pieces {
   border-bottom-right-radius: 66% 36%;
 }
-
 
 .hit-piece, .miss-piece{
   width: 24px;

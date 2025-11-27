@@ -366,6 +366,15 @@ export const display = (function() {
         }   
     }
 
+    const gamePauseScreen = () => {
+        const oppBoard = document.querySelector(".opponent-board>.board");
 
-    return {gameboard, gamePieces, initialScreen, selectScreen, gameboardSelection, gamePiece, gamePlay}
+        const pauseScreen = document.createElement("div");
+        pauseScreen.classList.add("pause-screen");
+        oppBoard.appendChild(pauseScreen);
+    }
+
+
+
+    return {gameboard, gamePieces, initialScreen, selectScreen, gameboardSelection, gamePiece, gamePlay, gamePauseScreen}
 })();

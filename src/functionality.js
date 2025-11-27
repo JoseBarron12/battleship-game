@@ -53,6 +53,9 @@ const getFormShipInputToBoard = (arrOfShips, gameboard, form) => {
     });
 }
 
+const delay = t => new Promise(resolve => setTimeout(resolve, t));
+
+
 export const functionality = (function() {
     const startGameBtn = (btn, parent) => {
         btn.addEventListener("click", () => {
@@ -192,42 +195,45 @@ export const functionality = (function() {
     }
 
     const tileBtn = (tile, x, y) => {
-        const displayCoords = () => {
+        const displayCoords =  async () => {
             const currentMiss = oppGameBoard.missedAttacks;
             
             oppGameBoard.receiveAttack(x, y);
             
             const newMiss = oppGameBoard.missedAttacks;
-
             const isHit = (currentMiss == newMiss) ? true : false;
             
-            display.gamePlay(x, y, false, isHit);
+            tile.removeEventListener("click", displayCoords);
             
+            display.gamePlay(x, y, false, isHit);
             display.gamePiece(tile, isHit);
 
-            setTimeout(opponentPlay, 2500);
-            
-
-            tile.removeEventListener("click", displayCoords);
-        }
+            display.gamePauseScreen();
         
-        tile.addEventListener("click", displayCoords);
+            delay(1000).then(() => {
+                opponentPlay();
 
+            }).then(() => {
+                delay(1000).then(() => {
+                    document.querySelector(".pause-screen").remove();
+                });
+            });
+
+            
+            
+        }
+        tile.addEventListener("click", displayCoords);
     }
 
     const opponentPlay = () => {
         const x = getRandomNum(0,10);
         const y = getRandomNum(0,10);
 
-        console.log(`X:${x}, Y:${y}`);
-
         const currentMiss = playerGameBoard.missedAttacks;
 
         playerGameBoard.receiveAttack(y, x);
             
         const newMiss = playerGameBoard.missedAttacks;
-
-        console.log(playerGameBoard);
 
         const isHit = (currentMiss == newMiss) ? true : false;
 
@@ -237,7 +243,9 @@ export const functionality = (function() {
         const tile = playerBoard.querySelector(`.tile-${y}-${x}`);
 
         display.gamePiece(tile, isHit);
+
     }
+
 
 
     return {startGameBtn, submitShipBtn, resetFormBtn, shuffleFormBtn, selectInputField, opponentGameBoard, tileBtn, opponentPlay}
