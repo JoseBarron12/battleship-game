@@ -4,6 +4,7 @@ import carrierImg from "./images/carrier-piece.svg"
 import battleshipImg from "./images/battleship-piece.svg"
 import submarineImg from "./images/submarine-piece.svg"
 import destroyerImg from "./images/destroyer-piece.svg"
+import { oppGameBoard, playerGameBoard } from ".";
 
 const getRandomNum = (min, max) => {
     return Math.floor(Math.random() * max);
@@ -42,14 +43,19 @@ const createSVG = ({ className, viewBox, pathD, titleText }) => {
 };
 
 export const display = (function() {
-    const initialScreen = (parent) => {
+    const initialScreen = (parent, winScreen, winner) => {
+        parent.replaceChildren();
+        
         const screen = document.createElement("div");
         screen.classList.add("welcome-screen");
         parent.appendChild(screen);
         
         const header = document.createElement("h1");
         header.classList.add("welcome-header");
-        header.textContent = "Welcome to Battleship"
+        
+        const text = (winScreen) ? `Congratulations ${winner}!`: "Welcome to Battleship"
+        
+        header.textContent = text;
         screen.appendChild(header);
 
         const btn = document.createElement("button");
@@ -63,6 +69,18 @@ export const display = (function() {
         help.classList.add("help-desc");
         help.textContent = "How to play?"
         screen.appendChild(help);
+
+        if(winScreen) // Reset both boards
+        {
+            playerGameBoard.clearBoard();
+            oppGameBoard.clearBoard();
+            
+            document.querySelector('.game-board').replaceChildren();
+            display.gameboard(document.querySelector(".game-board"));
+
+            
+        }
+
     }
 
     const selectScreen = (parent) => {
@@ -373,8 +391,6 @@ export const display = (function() {
         pauseScreen.classList.add("pause-screen");
         oppBoard.appendChild(pauseScreen);
     }
-
-
 
     return {gameboard, gamePieces, initialScreen, selectScreen, gameboardSelection, gamePiece, gamePlay, gamePauseScreen}
 })();

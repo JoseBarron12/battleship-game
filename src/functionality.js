@@ -208,6 +208,13 @@ export const functionality = (function() {
             display.gamePlay(x, y, false, isHit);
             display.gamePiece(tile, isHit);
 
+            if(oppGameBoard.areAllShipsSunk())
+            {
+                display.initialScreen(document.querySelector(".opponent-board"),true, "Player");
+                return;
+            }
+
+
             display.gamePauseScreen();
         
             delay(1000).then(() => {
@@ -216,10 +223,14 @@ export const functionality = (function() {
             }).then(() => {
                 delay(1000).then(() => {
                     document.querySelector(".pause-screen").remove();
+                    if(playerGameBoard.areAllShipsSunk())
+                    {
+                        display.initialScreen(document.querySelector(".opponent-board"),true, "Computer");
+                        return;
+                    }
+                    
                 });
-            });
-
-            
+            });   
             
         }
         tile.addEventListener("click", displayCoords);
@@ -245,6 +256,8 @@ export const functionality = (function() {
         display.gamePiece(tile, isHit);
 
     }
+
+
 
 
 
