@@ -2,6 +2,9 @@ import { oppGameBoard, playerGameBoard } from ".";
 import { display } from "./display";
 import { Gameboard } from "./gameboard";
 
+const getRandomNum = (min, max) => {
+    return Math.floor(Math.random() * max);
+}
 
 const getShipInput = (form) => {
     const fields = form.querySelectorAll("fieldset");
@@ -92,7 +95,7 @@ export const functionality = (function() {
             
             if(validInput)
             {
-                playerGameBoard.gameboard = gameboard;
+                playerGameBoard.gameboard = gameboard.gameboard;
                 display.gameboard(document.querySelector(".opponent-board"), true);
             }
 
@@ -202,6 +205,9 @@ export const functionality = (function() {
             
             display.gamePiece(tile, isHit);
 
+            setTimeout(opponentPlay, 5000);
+            
+
             tile.removeEventListener("click", displayCoords);
         }
         
@@ -209,6 +215,22 @@ export const functionality = (function() {
 
     }
 
+    const opponentPlay = () => {
+        const x = getRandomNum(0,10);
+        const y = getRandomNum(0,10);
 
-    return {startGameBtn, submitShipBtn, resetFormBtn, shuffleFormBtn, selectInputField, opponentGameBoard, tileBtn}
+        const currentMiss = playerGameBoard.missedAttacks;
+
+        playerGameBoard.receiveAttack(x, y);
+            
+        const newMiss = playerGameBoard.missedAttacks;
+
+        const isHit = (currentMiss == newMiss) ? true : false;
+
+        display.gamePlay(x, y, true, isHit);
+
+    }
+
+
+    return {startGameBtn, submitShipBtn, resetFormBtn, shuffleFormBtn, selectInputField, opponentGameBoard, tileBtn, opponentPlay}
 })();
