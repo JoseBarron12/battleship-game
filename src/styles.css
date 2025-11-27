@@ -539,6 +539,7 @@ option {
   border-radius: 100%;
   box-shadow: var(--inset-color) 1px 1px 1px 1px;
   position: absolute;
+  z-index: 5;
 }
 
 .hit-piece {

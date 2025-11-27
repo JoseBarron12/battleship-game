@@ -205,7 +205,7 @@ export const functionality = (function() {
             
             display.gamePiece(tile, isHit);
 
-            setTimeout(opponentPlay, 5000);
+            setTimeout(opponentPlay, 2500);
             
 
             tile.removeEventListener("click", displayCoords);
@@ -219,16 +219,24 @@ export const functionality = (function() {
         const x = getRandomNum(0,10);
         const y = getRandomNum(0,10);
 
+        console.log(`X:${x}, Y:${y}`);
+
         const currentMiss = playerGameBoard.missedAttacks;
 
-        playerGameBoard.receiveAttack(x, y);
+        playerGameBoard.receiveAttack(y, x);
             
         const newMiss = playerGameBoard.missedAttacks;
+
+        console.log(playerGameBoard);
 
         const isHit = (currentMiss == newMiss) ? true : false;
 
         display.gamePlay(x, y, true, isHit);
 
+        const playerBoard = document.querySelector(".game-board");
+        const tile = playerBoard.querySelector(`.tile-${y}-${x}`);
+
+        display.gamePiece(tile, isHit);
     }
 
 
