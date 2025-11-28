@@ -45,6 +45,3 @@ git clone https://github.com/josebarron12/battleship-game.git
 cd battleship-game
 npm install
 npm start
-
-
-
