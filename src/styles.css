@@ -297,11 +297,10 @@ option {
 
 .help-desc {
   font-size: smaller;
-  text-decoration: underline;
   opacity: 90%;
   margin-top: 8px;
+  color: rgba(255, 255, 255, 0.75);
 }
-
 
 .left-side, .right-side {
     margin: 16px 0px;

@@ -65,9 +65,10 @@ export const display = (function() {
 
         functionality.startGameBtn(btn, parent);
 
-        const help = document.createElement("p");
+        const help = document.createElement("a");
         help.classList.add("help-desc");
         help.textContent = "How to play?"
+        help.href = "https://en.wikipedia.org/wiki/Battleship_(game)"
         screen.appendChild(help);
 
         if(winScreen) // Reset both boards
