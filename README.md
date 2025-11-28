@@ -1,4 +1,3 @@
-# battleship-game
 # Battleship Game
 
 A browser-based Battleship game where you place your ships, choose attack coordinates, and battle against a computer opponent.
