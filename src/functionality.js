@@ -237,8 +237,22 @@ export const functionality = (function() {
     }
 
     const opponentPlay = () => {
-        const x = getRandomNum(0,10);
-        const y = getRandomNum(0,10);
+        let x = getRandomNum(0,10);
+        let y = getRandomNum(0,10);
+
+        let playerTile = document.querySelector(`.game-board > .row > .column.tile-${y}-${x}`)
+        let hitPiece = playerTile.querySelector(".hit-piece");
+        let missPiece = playerTile.querySelector(".miss-piece");
+
+        while(hitPiece != null || missPiece != null)
+        {
+            x = getRandomNum(0,10);
+            y = getRandomNum(0,10);
+
+            playerTile = document.querySelector(`.game-board > .row > .column.tile-${y}-${x}`)
+            hitPiece = playerTile.querySelector(".hit-piece");
+            missPiece = playerTile.querySelector(".miss-piece");
+        }
 
         const currentMiss = playerGameBoard.missedAttacks;
 
@@ -256,10 +270,6 @@ export const functionality = (function() {
         display.gamePiece(tile, isHit);
 
     }
-
-
-
-
 
     return {startGameBtn, submitShipBtn, resetFormBtn, shuffleFormBtn, selectInputField, opponentGameBoard, tileBtn, opponentPlay}
 })();
